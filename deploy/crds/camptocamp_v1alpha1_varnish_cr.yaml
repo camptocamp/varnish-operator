@@ -1,0 +1,7 @@
+apiVersion: camptocamp.com/v1alpha1
+kind: Varnish
+metadata:
+  name: example-varnish
+spec:
+  # Add fields here
+  size: 3
