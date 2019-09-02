@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-operator
+  name: varnish-operator
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: app-operator
+      name: varnish-operator
   template:
     metadata:
       labels:
-        name: app-operator
+        name: varnish-operator
     spec:
-      serviceAccountName: app-operator
+      serviceAccountName: varnish-operator
       containers:
-        - name: app-operator
-          # Replace this with the built image name
-          image: REPLACE_IMAGE
+        - name: varnish-operator
+          image: camptocamp/varnish-operator
           command:
-          - app-operator
+          - varnish-operator
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -30,4 +29,4 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "app-operator"
+              value: "varnish-operator"
